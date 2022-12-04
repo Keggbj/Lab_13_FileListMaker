@@ -115,8 +115,8 @@ public class Main {
                 }
             } catch (FileNotFoundException e) {
                 System.out.println("File not found!!!");
-                e.printStackTrace();
-            } catch (IOException e) {
+                e.printStackTrace(); // looks to be used with the fillstack to allow variable to be printed
+            } catch (IOException e) { // ioexception stops an error from occurring
                 e.printStackTrace();
             }
         } else {
@@ -128,13 +128,13 @@ public class Main {
                 try {
                     File workingDirectory = new File(System.getProperty("user.dir"));
 
-                    chooser.setCurrentDirectory(workingDirectory);
+                    chooser.setCurrentDirectory(workingDirectory); // sends to directory or file place where file will be opened
 
-                    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { // showopen creates the popup box that keeps appearing behind my java window...
                         select = chooser.getSelectedFile();
                         Path file = select.toPath();
                         InputStream in = new BufferedInputStream(Files.newInputStream(file, CREATE));
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(in)); // makes secure
                         list.clear();
 
                         while (reader.ready()) {
@@ -170,9 +170,9 @@ public class Main {
             } else {
                 System.out.println("Overwriting previous save");
             }
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName)); //secure
             for (String push : list) {
-                writer.write(push, 0, push.length());
+                writer.write(push, 0, push.length()); // writes the code to file
             }
             writer.close();
             System.out.println("Data file written!");
