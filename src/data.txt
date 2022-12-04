@@ -1,0 +1,6 @@
+Sample data for our file writing example.
+Sample data Line 2.
+Sample data Line 3.
+Sample data Line 4.
+Sample da Line 5.
+
